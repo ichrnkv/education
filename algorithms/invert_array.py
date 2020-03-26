@@ -2,7 +2,6 @@ def invert_array(A):
     """
     Inverts array
     :param A: list
-    :return:
     """
     n = len(A)
     for k in range(n//2):
