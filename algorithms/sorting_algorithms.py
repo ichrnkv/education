@@ -26,6 +26,19 @@ def bubble_sort(A):
                 A[k], A[k+1] = A[k+1], A[k]
 
 
+def count_sort(A):
+    """Count sort"""
+    m = max(A) + 1
+    f = [0] * m
+    for x in A:
+        f[x] += 1
+
+    idx = 0
+    for i in range(m):
+        for c in range(f[i]):
+            A[idx] = i
+            idx += 1
+
 
 def test_sort(sort_algorithm):
     print('Test of: {}'.format(sort_algorithm.__doc__))
@@ -49,5 +62,5 @@ def test_sort(sort_algorithm):
 
 
 if __name__ == '__main__':
-    for algorithm in [insert_sort, choise_sort, bubble_sort]:
+    for algorithm in [insert_sort, choise_sort, bubble_sort, count_sort]:
         test_sort(algorithm)
