@@ -48,10 +48,12 @@ def false_alarm(X, m, n, alpha=0.5):
         print('{} pairs passed'.format(idx+1), end='\r')
     return p_stats
 
+
 if __name__ == '__main__':
-    
     # generate big sample from normal distibution
     r = np.random.normal(0,1,5000)
     p_stats = false_alarm(r, 20, 30)
-    p_results = [1 if any(x < 0.05 for x in item) else 0 for item in p_stats]
+    # bonferroni correction
+    b_coef = 20*(20-1)/2
+    p_results = [1 if any(x < 0.05/b_coef for x in item) else 0 for item in p_stats]
     print('Part of false alarmed is %.4f' % (sum(p_results)/len(p_results)))
