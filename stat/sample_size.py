@@ -1,12 +1,12 @@
 import math
  
-# доверительные интервалы: 50%, 68%, 90%, 95%, and 99%
+# confidence intervals: 50%, 68%, 90%, 95%, and 99%
 confidence_level_constant = [50,.67], [68,.99], [90,1.64], [95,1.96], [99,2.57]
  
 
 def sample_size(population_size, confidence_level, confidence_interval):
     """
-    расчет необходимого размера выборки
+   calculation of sample size
     """
     Z = 0.0
     p = 0.5
@@ -15,7 +15,7 @@ def sample_size(population_size, confidence_level, confidence_interval):
     n_0 = 0.0
     n = 0.0
 
-      # расчет отклонения в единицах сигм
+    # calculation of sigma deviation
     for i in confidence_level_constant:
         if i[0] == confidence_level:
             Z = i[1]
@@ -23,7 +23,7 @@ def sample_size(population_size, confidence_level, confidence_interval):
     if Z == 0.0:
         return -1
 
-      # расчет размера выборки
+    # sample size calculation
     n_0 = ((Z**2) * p * (1-p)) / (e**2)
     n = n_0 / (1 + ((n_0 - 1) / float(N)) )
 
