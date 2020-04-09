@@ -23,4 +23,5 @@ if __name__ == '__main__':
     df = pd.DataFrame(r, columns=['value'])
     bucketed_df = bucketing(df, n=1000)
     buckets = bucketed_df.groupby('cohort')['value'].agg(np.mean)
+    print('P-value is %4f:' %stats.shapiro(buckets)[1])
     
