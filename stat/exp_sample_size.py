@@ -1,3 +1,5 @@
+# exp size for boolean metrics
+
 from statsmodels.stats.power import zt_ind_solve_power
 import scipy.stats as stats
 
